@@ -1,0 +1,37 @@
+@use "/src/assets/styles/variables";
+@use "/src/assets/styles/mixins";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+}
+
+.email {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.account {
+  font-family: Manrope;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 9px;
+  padding: 4px 7px;
+  font-size: 0.75rem;
+
+  transition: all 0.2s ease;
+  border: 2px solid variables.$bg-roof;
+  color: variables.$bg-roof;
+
+  @include mixins.clickable-btn();
+
+  &.login {
+  }
+
+  &.logout {
+    border: 2px solid rgb(150, 150, 150);
+
+    color: rgba(150, 150, 150);
+  }
+}

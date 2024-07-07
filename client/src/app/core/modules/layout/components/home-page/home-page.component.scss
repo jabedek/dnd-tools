@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-action {
+  display: flex;
+  height: 100px;
+}
+
+.ticks-wrapper {
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+
+  padding: 30px;
+  background: #fff;
+  height: fit-content;
+}

@@ -1,0 +1,213 @@
+@use "/src/assets/styles/mixins";
+@use "/src/assets/styles/variables";
+
+@mixin maxHeightsPreconfigured($itemHeight: 40px) {
+  $lengths: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+  @each $length in $lengths {
+    .max-height-items-#{$length} {
+      max-height: calc($itemHeight * $length);
+    }
+  }
+}
+
+nav {
+  height: auto;
+  position: relative;
+  width: auto;
+  color: black;
+  overflow: hidden;
+  box-shadow: variables.$shadow-5;
+  border: none;
+  border-top: variables.$border-top-width solid variables.$bg-roof;
+  border-radius: 3px;
+  display: flex;
+  align-items: stretch;
+  background-color: #ddd;
+}
+
+.routes {
+  position: relative;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.subroutes {
+  position: relative;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  transition: all 300ms;
+  height: auto;
+  max-height: 0px;
+}
+
+.route {
+  width: 240px;
+  height: auto;
+  display: flex;
+
+  &__content {
+    width: 220px;
+    display: flex;
+    align-items: center;
+  }
+
+  &:not(:last-child) {
+    .route__content {
+      border-bottom: 1px solid #aaa;
+    }
+  }
+
+  &__side {
+    border-left: 4px solid #eee;
+    width: 34px;
+    height: 36px;
+  }
+}
+
+.active {
+  .route {
+    filter: saturate(200%);
+
+    &__content {
+      .multi-route-title,
+      .single-route-title {
+        background-color: variables.$bg-light-0;
+      }
+    }
+
+    &__side {
+      border-left-color: variables.$bg-medium-0;
+    }
+  }
+}
+
+.multi-wrapper {
+  overflow: hidden;
+  width: 100%;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  &.open {
+    transition: all 100ms;
+    .multi-route-title::before {
+      background-image: url("/assets/icons/arrow-right-active.svg");
+      transform: rotate(90deg);
+    }
+
+    @include maxHeightsPreconfigured;
+  }
+}
+
+.single-route-title,
+.multi-route-title,
+.subroute-title {
+  font-family: Manrope;
+  text-transform: uppercase;
+  word-spacing: 3px;
+  user-select: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  align-content: center;
+
+  position: relative;
+  transition: all 200ms ease;
+
+  height: 36px;
+  width: 100%;
+
+  span {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 36px;
+    height: 36px;
+    position: relative;
+    padding-left: 30px;
+  }
+
+  a {
+    height: fit-content;
+    width: 100%;
+  }
+}
+
+.single-route-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  justify-content: start;
+
+  &:hover {
+    background-color: #eee;
+  }
+}
+
+.multi-route-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  justify-content: start;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  &::before {
+    content: "";
+    left: 6px;
+    position: absolute;
+    background-image: url("/assets/icons/arrow-right.svg");
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 18px;
+    transition: all 200ms ease;
+
+    .links {
+      height: 0;
+    }
+  }
+}
+
+.subroute-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  justify-content: center;
+  flex-direction: column;
+  border-top: 1px solid #ccc;
+
+  border-right: 4px solid #eee;
+
+  span {
+    padding-left: 42px;
+  }
+
+  &::before {
+    content: "";
+    left: 14px;
+    position: absolute;
+    background-image: url("/assets/icons/line-start.svg");
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 14px;
+  }
+
+  &.active {
+    background-color: variables.$bg-light-0-lighter;
+    border-right: 4px solid variables.$bg-medium-0-lighter;
+  }
+
+  &:hover,
+  &.active:hover {
+    background-color: #fff;
+  }
+}

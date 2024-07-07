@@ -1,0 +1,20 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": ["jasmine"],
+    "paths": {
+      "@core/*": ["src/app/core/*"],
+      "@store/*": ["src/app/store/*"],
+      "@features/*": ["src/app/features/*"],
+      "@models/asian-poker": [
+        "src/app/features/entertainment/asian-poker/models/index"
+      ],
+      "@shared/*": ["src/app/shared/*"],
+      "@env/*": ["src/environments/*"],
+      "@assets/*": ["src/assets/*"]
+    }
+  },
+  "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
+}

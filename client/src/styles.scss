@@ -1,0 +1,36 @@
+@import "assets/styles/scrollbar";
+@import "assets/styles/reset";
+@import "assets/styles/variables";
+
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  font-family: Manrope;
+  min-width: 0;
+}
+
+.mutable-wrapper {
+  position: relative;
+
+  &.active {
+    .mutable-label {
+      &:after {
+        background-image: url("/assets/icons/edit-square-active.svg");
+      }
+    }
+  }
+
+  .mutable-label {
+    cursor: pointer;
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      background-image: url("/assets/icons/edit-square.svg");
+      width: 14px;
+      height: 14px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+  }
+}
