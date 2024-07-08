@@ -4,18 +4,18 @@
       <app-logo />
 
       <!-- Regular header stuff -->
-      <ng-container *ngIf="currentUrl$ | async as url">
+      <!-- <ng-container *ngIf="currentUrl$ | async as url">
         <h4 class="url">
           <p *ngFor="let part of url.parts" class="url-part">
             {{ part }}
           </p>
         </h4>
-      </ng-container>
+      </ng-container> -->
     </div>
 
     <!-- Absolute 'most top' elements -->
     <div class="right-section">
-      <ng-container *ngIf="authLoader$ | async as authLoader">
+      <!-- <ng-container *ngIf="authLoader$ | async as authLoader">
         <app-account-display *ngIf="authLoader === 'inactive'"></app-account-display>
         <app-spinner *ngIf="authLoader === 'active'"></app-spinner>
         <ng-container *ngIf="userLoggedIn$ | async as userLoggedIn">
@@ -26,7 +26,7 @@
             </div>
           </div>
         </ng-container>
-      </ng-container>
+      </ng-container> -->
     </div>
   </div>
 </header>

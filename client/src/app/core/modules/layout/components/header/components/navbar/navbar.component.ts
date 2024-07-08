@@ -1,9 +1,7 @@
 import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import { APP_ROUTES } from './routes.const';
 import { fromEvent, takeUntil, tap } from 'rxjs';
-import { BaseComponent } from '@shared/abstracts/base/base.component';
 import { Store } from '@ngrx/store';
-import { AppState } from '@store/app-state';
 import { AppRoute } from './routes.model';
 
 @Component({
@@ -11,7 +9,7 @@ import { AppRoute } from './routes.model';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent extends BaseComponent {
+export class NavbarComponent {
   routes = APP_ROUTES;
 
   @Output() closeOutclick = new EventEmitter<void>();
@@ -30,14 +28,7 @@ export class NavbarComponent extends BaseComponent {
     }),
   );
 
-  constructor(
-    public el: ElementRef,
-    private store: Store<AppState>,
-  ) {
-    super('NavbarComponent');
-
-    this.fromEvent$.pipe(takeUntil(this.__destroy)).subscribe();
-  }
+  constructor(public el: ElementRef) {}
 
   handleRoute(pickedRoute: AppRoute) {
     this.routes.forEach((route) => {

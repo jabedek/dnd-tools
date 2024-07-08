@@ -17,9 +17,7 @@ export class LayoutService implements OnDestroy {
   private loaders$ = new BehaviorSubject<Record<DataLoaders, LoaderState>>({ auth: 'inactive' });
   route$: Observable<AppRoute> = new Observable();
 
-  constructor(
-    private router: Router,
-  ) {
+  constructor(private router: Router) {
     console.log(this.router);
 
     this.router.events.pipe(takeUntil(this.destroy$)).subscribe((event) => {
